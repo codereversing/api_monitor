@@ -1,0 +1,32 @@
+package ApiMonitor.ProtoBuf;
+
+message Call
+{
+    required uint32 uiHookId = 1;
+    
+    repeated uint64 uiParameter = 2;
+}
+
+message AddHook
+{
+    required uint32 uiHookId = 1;
+    
+    required string strDllName = 2;
+    required string strFunctionName = 3;
+    required uint32 uiNumParameters = 4;
+}
+
+message RemoveHook
+{
+    required uint32 uiHookId = 1;
+}
+
+message MonitorMessage
+{
+    optional AddHook mAddHook = 1;
+    optional RemoveHook mRemoveHook = 2;
+    
+    optional Call mCall = 3;
+    
+    optional bool bIsContinue = 4;
+}
